@@ -1,0 +1,37 @@
+extends translated
+
+block page
+    .col-sm-8.padding-bottom-40
+        .panel.panel-default.fadeout-10
+            .panel-body
+                h1 {{ post.title }}
+                i {{ post.posted || dateNow | date:'fullDate' | orderBy:date:reverse }}
+                hr
+                div(ng-bind-html="post.content | markdown")
+
+    .col-sm-4.padding-bottom-40
+        .panel.panel-default.fadeout-15
+            .panel-body
+                h1 Articles
+                hr
+                ul.nav.nav-stacked.nav-pills(ng-repeat="post in posts")
+                    li
+                        a(ng-click="setPost($index)")
+                            h4 {{ post.title }}
+        
+        .panel.panel-default.fadeout-10
+            .panel-body
+                button.btn.btn-default.pull-left.newPost(ng-click="newPost()") New
+                button.btn.btn-default.savePost(ng-click="deletePost()") Delete
+                button.btn.btn-default.pull-right.savePost(ng-disabled="{{ saveDisabled }}", ng-click="savePost()") Save
+                input.form-control.input-lg(type="text", ng-model="post.title", placeholder="title").editor-panel
+                textarea.form-control.input-lg(rows="25", ng-model="post.content", placeholder="content").editor-panel
+                i Add style to your post with 
+                    a(target="_blank", href="http://five.squarespace.com/display/ShowHelp?section=Markdown") Markdown
+                hr
+                label(for="#uploader") Choose background image(s):
+                input#uploader.form-control.input-lg(type="file", ng-file-select="onFileSelect($files)", placeholder="Upload background images.." multiple)
+                .file-thumb(ng-repeat="file in post.background")
+                    a.thumbnail(ng-href="/uploads/{{file}}", target="_blank")
+                        img.img-responsive.img-thumbnail(ng-src="/uploads/{{file}}")
+    

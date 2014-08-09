@@ -1,0 +1,16 @@
+extends layout
+
+mixin label(text, model, placehold, type)
+    if !type
+        - var type = 'text'
+        label(class="control-label")= text
+        input.form-control(type=type, ng-model=model, placeholder=placehold)
+            
+mixin formin(place, model)
+  input.form-control(placeholder=place, ng-model=model)
+  
+mixin formsub(click, text)
+    button.btn(type="Submit", ng-click=click)= text
+    
+mixin button(style, click, text)
+    button.btn(type="button", class="btn-"+style, ng-click=click)= text 

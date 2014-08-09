@@ -1,0 +1,52 @@
+doctype html
+//if lt IE 7
+  <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+//if IE 7
+  <html class="no-js lt-ie9 lt-ie8">
+//if IE 8
+  <html class="no-js lt-ie9">
+//[if gt IE 8]><!
+html(class='no-js')
+  //<![endif]
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+ 
+    block title
+        title Replace me, including tag
+ 
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width')
+    block styles
+        link(href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", rel="stylesheet")
+        link(href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css", rel="stylesheet")
+        link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel="stylesheet")
+        != css('bootstrap.custom')
+        != css('override')
+    block prescripts
+        script(src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min.js")
+        script(src="//code.angularjs.org/1.2.4/angular.min.js")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js")
+        != js("angular_mods/angular-ui-utils.min.js")
+        script(src="//code.angularjs.org/1.2.4/angular-animate.min.js")
+        script(src="//code.angularjs.org/1.2.4/angular-route.min.js")
+        script(src="//cdn.jsdelivr.net/restangular/latest/restangular.min.js")
+        script(src="//codeorigin.jquery.com/jquery-1.10.2.min.js")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/oauth-io/0.9.0/oauth.js")
+        != js('controllers.js')
+  body(ng-app="arkh")
+    //if lt IE 7
+      p.chromeframe.
+        You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> or
+        <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a>
+        to improve your experience.
+ 
+    block content
+    
+    block postscripts    
+        script.
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));

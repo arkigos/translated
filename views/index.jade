@@ -1,0 +1,24 @@
+extends translated
+block page
+    .col-md-8.padding-bottom-40
+        .panel.panel-default.fadeout-10
+            .panel-body
+                button.btn.btn-default
+                    span.fa.fa-facebook
+                button.btn.btn-default
+                    span.fa.fa-twitter
+                button.btn.btn-default
+                    span.fa.fa-google-plus-square
+                h1 {{ post.title }}
+                i {{ post.posted | date:'fullDate' }}
+                hr
+                div(ng-bind-html="post.content | markdown")
+    .col-md-4
+        .panel.panel-default.fadeout-10
+            .panel-body
+                h1 Articles
+                hr
+                ul.nav.nav-stacked.nav-pills(ng-repeat="article in posts")
+                    li
+                        a(ng-click="setPost($index)") 
+                            h4 {{ article.title }}
